@@ -1,0 +1,51 @@
+﻿@model dailyphongve.Models.ve
+
+@{
+    ViewData["Title"] = "Xoá";
+}
+
+<h1>Xoá</h1>
+
+<h3>Bạn muốn xoá sản phẩm này ???</h3>
+<div>
+    <h4>SMartPhone</h4>
+    <hr />
+    <dl class="row" style="border:solid">
+        <dt class="col-sm-2">
+            Tên vé
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            Thời gian
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.time)
+        </dd>
+        <dt class="col-sm-2">
+            Thời lượng
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Period)
+        </dd>
+        <dt class="col-sm-2">
+            Loại vé
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Genre)
+        </dd>
+        <dt class="col-sm-2">
+            Giá vé
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="veID" />
+        <input type="submit" value="Xoá" class="btn btn-danger" />
+        <a asp-action="Index">Quay lại</a>
+    </form>
+</div>

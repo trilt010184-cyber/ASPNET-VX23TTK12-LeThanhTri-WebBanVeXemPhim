@@ -1,0 +1,24 @@
+﻿@page "/admin/ves/details/{id:long}"
+<h3 class="bg-info text-white text-center p-1">Details</h3>
+<table class="table table-sm table-bordered table-striped">
+<tbody>
+<tr><th>ID</th><td>@ve.veID</td></tr>
+<tr><th>Title</th><td>@ve.Title</td></tr>
+<tr><th>ProfilePicture</th><td>@ve.ProfilePicture</td></tr>
+<tr><th>Genre</th><td>@ve.Genre</td></tr>
+<tr><th>Price</th><td>@ve.Price.ToString("C")</td></tr>
+</tbody>
+</table>
+<NavLink class="btn btn-warning" href="@EditUrl">Edit</NavLink>
+<NavLink class="btn btn-secondary" href="/admin/ves">Back</NavLink>
+@code {[Inject]
+public IdailyphongveRepository Repository { get; set; }
+[Parameter]
+public long Id { get; set; }
+public ve ve { get; set; }
+protected override void OnParametersSet()
+{
+ve = Repository.ves.FirstOrDefault(b => b.veID == Id);
+}
+public string EditUrl => $"/admin/ves/edit/{ve.veID}";
+}
